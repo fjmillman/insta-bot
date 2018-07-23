@@ -1,0 +1,15 @@
+{
+  "name": "photo-sempai-bot",
+  "version": "1.0.0",
+  "description": "A telegram bot which automates the process of collecting names of instagram users, posting the complete list, and requests users to complete an action in a timeframe. ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "git@github.com:fjmillman/photo-sempai-bot.git",
+  "author": "Freddie John Millman <freddie.millman@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "telegraf": "^3.21.2"
+  }
+}
