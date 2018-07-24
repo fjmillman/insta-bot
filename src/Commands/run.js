@@ -1,7 +1,7 @@
 const sleep = require('../sleep');
 
 const run = () => (ctx) => {
-    if (ctx.session.operation !== null)
+    if (ctx.session.operation === 'ready' || ctx.session.operation === 'in progress')
         return ctx.reply('A session is already in progress.');
 
     ctx.session.participants = [];
@@ -40,7 +40,7 @@ const run = () => (ctx) => {
         }
     }
 
-    ctx.session.operation = null;
+    ctx.session.operation = 'idle';
     return ctx.reply('Session is complete.');
 };
 
