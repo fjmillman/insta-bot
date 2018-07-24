@@ -1,5 +1,5 @@
 const Telegraf = require('telegraf');
-const bot = new Telegraf(process.env.BOT_TOKEN, {username: 'photo_sempai_bot'});
+const bot = new Telegraf(process.env.BOT_TOKEN, { username: 'photo_sempai_bot' });
 
 const session = require('telegraf/session');
 const parse = require('./src/Middleware/parse');
