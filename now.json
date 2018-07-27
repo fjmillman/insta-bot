@@ -1,5 +1,7 @@
 {
   "env": {
-    "BOT_TOKEN": "@bot-token"
+    "BOT_TOKEN": "@bot-token",
+    "URL": "@url",
+    "PORT": "@port"
   }
 }

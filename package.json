@@ -10,6 +10,8 @@
   "author": "Freddie John Millman <freddie.millman@icloud.com>",
   "license": "MIT",
   "dependencies": {
+    "eslint": "^5.2.0",
     "telegraf": "^3.21.2"
-  }
+  },
+  "devDependencies": {}
 }
