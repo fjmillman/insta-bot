@@ -2,6 +2,7 @@
   "env": {
     "BOT_TOKEN": "@bot-token",
     "URL": "@url",
-    "PORT": "@port"
+    "PORT": "@port",
+    "SECRET_COMMAND": "@secret-command"
   }
 }

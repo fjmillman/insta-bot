@@ -3,7 +3,7 @@
  */
 const setroundtime = () => (ctx) => {
     /* Prevent non-administrators from using this command */
-    if (ctx.state.sender.status !== 'creator' && ctx.state.sender.status !== 'administrator')
+    if (ctx.state.status !== 'creator' && ctx.state.status !== 'administrator')
         return ctx.reply('Only the Sensei can use this command.');
 
     /* Prevent settings being changed during a round */
@@ -16,7 +16,7 @@ const setroundtime = () => (ctx) => {
 
     /* Check that the given value is acceptable */
     if (typeof ctx.command.args[0] !== 'number' && !ctx.command.args[0] % 5 && ctx.command.args[0] < 10)
-        return ctx.reply(`The round time must be a multiple of 5 and at least 10.`);
+        return ctx.reply(`The round time must be a multiple of 5 and at least 10 minutes long.`);
 
     /* Set the round time */
     ctx.session.roundTime = ctx.command.args[0];

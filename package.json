@@ -11,7 +11,11 @@
   "license": "MIT",
   "dependencies": {
     "eslint": "^5.2.0",
-    "telegraf": "^3.21.2"
+    "express": "^4.16.3",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.2.0",
+    "telegraf": "^3.21.2",
+    "telegraf-command-parts": "^1.0.3"
   },
   "devDependencies": {}
 }

@@ -1,5 +1,4 @@
 const sleep = require('../sleep');
-const calculateTimeAccumulated = require('../calculateTimeAccumulated');
 
 /**
  *  The 'begin' command allows a round to be begin if its state is set to 'idle'. It handles all of the processing
@@ -36,8 +35,7 @@ const begin = () => async (ctx) => {
     await sleep(ctx.session.dropTime - 1);
 
     /* Update the remaining drop time to the last minute left and inform the users before waiting a minute */
-    remainingDropTime =- calculateTimeAccumulated(ctx.session.startTime);
-    ctx.reply(`You have ${remainingDropTime} minute to drop your instagram username.`);
+    ctx.reply(`You have 1 minute to drop your instagram username.`);
     await sleep(1);
 
     /* Send a message back if there are no participants taking part and cancel the round */
@@ -51,7 +49,7 @@ const begin = () => async (ctx) => {
     let remainingRoundTime = ctx.session.roundTime;
     ctx.reply(`You have ${remainingRoundTime} minutes to work your way through the following list:`);
     for (let i = 0; i < ctx.session.participants.length; i++)
-        ctx.reply(`${ctx.session.participants[i].instagram}`);
+        ctx.replyWithMarkdown(`[${ctx.session.participants[i].instagram}](instagram.com/${ctx.session.participants[i].instagram})`);
 
     /* Update the current session into the 'in progress' state and wait 5 minutes */
     ctx.session.operation = 'in progress';
@@ -63,10 +61,10 @@ const begin = () => async (ctx) => {
         ctx.reply('The following have yet to complete the list:');
         for (let i = 0; i < ctx.session.participants.length; i++)
             ctx.reply(`@${ctx.session.participants[i].username}`);
-        remainingRoundTime =- calculateTimeAccumulated(ctx.session.startTime);
+        remainingRoundTime -= 5;
         ctx.reply(`You have ${remainingRoundTime} minutes left.`);
         await sleep(5);
-    } while (ctx.session.participants.length === 0 || remainingRoundTime > 0);
+    } while (ctx.session.participants.length > 0 && remainingRoundTime > 0);
 
     /* If there are any users left who have not completed their task, they are given a warning */
     if (ctx.session.participants.length > 0) {

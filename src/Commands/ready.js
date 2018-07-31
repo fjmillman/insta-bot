@@ -6,16 +6,19 @@ const ready = () => (ctx) => {
     if (ctx.session.operation !== 'ready')
         return ctx.reply('You must wait until the next round begins.');
 
+    if (ctx.state.command.splitArgs.length === 0)
+        return ctx.reply('You must provide an instagram username in order to take part.');
+
     /* Check that the user has not already added themselves to the round */
     for (let i = 0; i < ctx.session.participants.length; i++) {
-        if (ctx.state.sender.user.username === ctx.session.participants[i].username)
-            return ctx.reply(`${ctx.state.sender.user.first_name}, you have already joined this round.`)
+        if (ctx.state.username === ctx.session.participants[i].username)
+            return ctx.reply(`@${ctx.state.username}, you have already joined this round.`)
     }
 
     /* Add the user and their instagram username into the list */
-    ctx.session.participants.push({username: ctx.state.sender.user.username, instagram: ctx.state.command.args[0]});
+    ctx.session.participants.push({username: ctx.state.username, instagram: ctx.state.command.splitArgs[0]});
 
-    return ctx.reply(`${ctx.state.sender.user.first_name}, you are now a part of this round.`);
+    return ctx.reply(`@${ctx.state.username}, you are now a part of this round.`);
 };
 
 module.exports = ready;

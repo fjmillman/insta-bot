@@ -8,15 +8,15 @@ const done = () => (ctx) => {
         return ctx.reply('The round has not begun yet.');
 
     /* Remove the user from this round if they joined in  */
-    for (let i = 0; i < ctx.session.participants; i++) {
-        if (ctx.session.participants[i].username === ctx.state.sender.user.username) {
+    for (let i = 0; i < ctx.session.participants.length; i++) {
+        if (ctx.session.participants[i].username === ctx.state.username) {
             ctx.session.participants.splice(i);
-            return ctx.reply(`Well done ${ctx.state.sender.user.first_name}!`);
+            return ctx.reply(`Well done @${ctx.state.username}!`);
         }
     }
 
     /* If the user could not be found, inform the user that they are not a part of this round. */
-    return ctx.reply(`${ctx.state.sender.user.first_name}, you are not currently in this round.`);
+    return ctx.reply(`@${ctx.state.username}, you are not currently in this round.`);
 };
 
 module.exports = done;

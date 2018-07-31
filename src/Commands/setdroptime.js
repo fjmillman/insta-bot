@@ -3,7 +3,7 @@
  */
 const setdroptime = () => (ctx) => {
     /* Prevent non-administrators from using this command */
-    if (ctx.state.sender.status !== 'creator' && ctx.state.sender.status !== 'administrator')
+    if (ctx.state.status !== 'creator' && ctx.state.status !== 'administrator')
         return ctx.reply('Only the Sensei can use this command.');
 
     /* Prevent settings being changed during a round */

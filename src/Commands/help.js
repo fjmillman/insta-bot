@@ -3,7 +3,7 @@
  */
 const help = () => (ctx) => {
     /* Send a help message back to the user */
-    return ctx.reply('I am the Photo Sempai Bot.\n\n' +
+    return ctx.replyWithMarkdown('I am the Photo Sempai Bot.\n\n' +
         'You can control me by sending me the following commands:\n\n' +
         '*General*\n' +
         '/start - start me up\n' +
@@ -13,7 +13,7 @@ const help = () => (ctx) => {
         '/begin - begin a new round\n' +
         '/ready - join the current round\n' +
         '/done - complete the current round\n\n' +
-        '*Bot Settings [Admin]*\n' +
+        '*Bot Settings* [Admin]\n' +
         '/setdroptime - set the time limit for dropping usernames\n' +
         '/setroundtime - set the time limit for completing the round');
 };
