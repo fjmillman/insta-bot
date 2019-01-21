@@ -4,5 +4,6 @@
     "URL": "@url",
     "PORT": "@port",
     "SECRET_COMMAND": "@secret-command"
-  }
+  },
+  "alias": ["photo-sempai-bot"]
 }
